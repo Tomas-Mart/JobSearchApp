@@ -13,6 +13,16 @@
 		A7479D072BA4C47900CD4309 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7479D062BA4C47900CD4309 /* Preview Assets.xcassets */; };
 		A7479D0E2BA612D400CD4309 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7479D0D2BA612D400CD4309 /* Service.swift */; };
 		A7479D862BAB517500CD4309 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7479D852BAB517500CD4309 /* ContentViewModel.swift */; };
+		A7480E6A2BB54B1D000A2FC0 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E692BB54B1D000A2FC0 /* TabItem.swift */; };
+		A7480E6C2BB54CCE000A2FC0 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E6B2BB54CCE000A2FC0 /* MainScreen.swift */; };
+		A7480E6E2BB54D1C000A2FC0 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E6D2BB54D1C000A2FC0 /* Input.swift */; };
+		A7480E702BB54D59000A2FC0 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E6F2BB54D59000A2FC0 /* HomeScreen.swift */; };
+		A7480E722BB54D9E000A2FC0 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E712BB54D9E000A2FC0 /* Favorites.swift */; };
+		A7480E742BB54DEC000A2FC0 /* ContentViewVacancies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E732BB54DEC000A2FC0 /* ContentViewVacancies.swift */; };
+		A7480E762BB54E37000A2FC0 /* JobVacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E752BB54E37000A2FC0 /* JobVacancy.swift */; };
+		A7480E782BB54E71000A2FC0 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E772BB54E71000A2FC0 /* Stub.swift */; };
+		A7480E7A2BB54EC5000A2FC0 /* TextFild.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E792BB54EC5000A2FC0 /* TextFild.swift */; };
+		A7480E7C2BB54EFF000A2FC0 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7480E7B2BB54EFF000A2FC0 /* NavigationConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +33,16 @@
 		A7479D062BA4C47900CD4309 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A7479D0D2BA612D400CD4309 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		A7479D852BAB517500CD4309 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		A7480E692BB54B1D000A2FC0 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		A7480E6B2BB54CCE000A2FC0 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		A7480E6D2BB54D1C000A2FC0 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		A7480E6F2BB54D59000A2FC0 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		A7480E712BB54D9E000A2FC0 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		A7480E732BB54DEC000A2FC0 /* ContentViewVacancies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewVacancies.swift; sourceTree = "<group>"; };
+		A7480E752BB54E37000A2FC0 /* JobVacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobVacancy.swift; sourceTree = "<group>"; };
+		A7480E772BB54E71000A2FC0 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		A7480E792BB54EC5000A2FC0 /* TextFild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFild.swift; sourceTree = "<group>"; };
+		A7480E7B2BB54EFF000A2FC0 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +77,18 @@
 			children = (
 				A7479CFF2BA4C47700CD4309 /* p3m4_5App.swift */,
 				A7479D0D2BA612D400CD4309 /* Service.swift */,
-				A7479D012BA4C47700CD4309 /* ContentView.swift */,
 				A7479D852BAB517500CD4309 /* ContentViewModel.swift */,
+				A7479D012BA4C47700CD4309 /* ContentView.swift */,
+				A7480E692BB54B1D000A2FC0 /* TabItem.swift */,
+				A7480E6B2BB54CCE000A2FC0 /* MainScreen.swift */,
+				A7480E6D2BB54D1C000A2FC0 /* Input.swift */,
+				A7480E6F2BB54D59000A2FC0 /* HomeScreen.swift */,
+				A7480E752BB54E37000A2FC0 /* JobVacancy.swift */,
+				A7480E712BB54D9E000A2FC0 /* Favorites.swift */,
+				A7480E732BB54DEC000A2FC0 /* ContentViewVacancies.swift */,
+				A7480E772BB54E71000A2FC0 /* Stub.swift */,
+				A7480E792BB54EC5000A2FC0 /* TextFild.swift */,
+				A7480E7B2BB54EFF000A2FC0 /* NavigationConfigurator.swift */,
 				A7479D032BA4C47900CD4309 /* Assets.xcassets */,
 				A7479D052BA4C47900CD4309 /* Preview Content */,
 			);
@@ -143,9 +173,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7480E722BB54D9E000A2FC0 /* Favorites.swift in Sources */,
+				A7480E6E2BB54D1C000A2FC0 /* Input.swift in Sources */,
+				A7480E7A2BB54EC5000A2FC0 /* TextFild.swift in Sources */,
+				A7480E742BB54DEC000A2FC0 /* ContentViewVacancies.swift in Sources */,
+				A7480E762BB54E37000A2FC0 /* JobVacancy.swift in Sources */,
+				A7480E6C2BB54CCE000A2FC0 /* MainScreen.swift in Sources */,
 				A7479D862BAB517500CD4309 /* ContentViewModel.swift in Sources */,
 				A7479D022BA4C47700CD4309 /* ContentView.swift in Sources */,
+				A7480E782BB54E71000A2FC0 /* Stub.swift in Sources */,
+				A7480E702BB54D59000A2FC0 /* HomeScreen.swift in Sources */,
 				A7479D002BA4C47700CD4309 /* p3m4_5App.swift in Sources */,
+				A7480E6A2BB54B1D000A2FC0 /* TabItem.swift in Sources */,
+				A7480E7C2BB54EFF000A2FC0 /* NavigationConfigurator.swift in Sources */,
 				A7479D0E2BA612D400CD4309 /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
