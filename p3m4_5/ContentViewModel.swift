@@ -9,13 +9,14 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     let service = Service()
+    let maimJson = "main"
     @Published var data = [Vacancies]()
     init(){
         getAllNews()
     }
     
     func getAllNews() {
-        service.getNews { vacancies in
+        service.loadJson(filename: maimJson){ vacancies in
             self.data = vacancies
         }
     }

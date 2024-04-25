@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MainScreen: View {
-    @State var email = ""
-    @State var isNext = false
+    @State private var email = ""
+    @State private var isEmailValid = false
+    @State private var isNext = false
     @Binding var selected: Int
     var body: some View {
         NavigationView {
@@ -37,21 +38,30 @@ struct MainScreen: View {
                                 Image(.letter)
                                     .padding(.all, 10)
                                 
-                                TextField("Электронная почта или телефон", text: $email)
-                                    .foregroundColor(.gray)
-                                
+                                TextField("", text: $email, prompt: Text("Электронная почта или телефон").foregroundColor(.gray))
+                                    
+                                                        .autocapitalization(.none)
+//                                                        .onReceive(Just(email)) { text in
+//                                                            self.isEmailValid = self.isValidEmail(email: text)
+//                                                        }
+                                    .overlay(Button(action: {
+                                        self.email = ""
+                                    }) {
+                                        if !self.email.isEmpty {
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.white)
+                                        }
+                                    }
+                                        .padding(.trailing, 15), alignment: .trailing)
                             }
                             .background(.color3)
-                            .foregroundColor(.gray)
                             .cornerRadius(10)
                             .shadow(color: .color1, radius: 10)
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: isEmailValid ? 0 : 2))
                             
                             HStack{
-                                
-                                Button {
-                                    if email == "1" {
-                                        isNext.toggle()
-                                    }
+                                NavigationLink {
+                                    Input(selected: $selected)
                                 } label: {
                                     Text("Продолжить")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
@@ -61,10 +71,8 @@ struct MainScreen: View {
                                 }
                                 
                                 Button {
-                                    if isNext {
+                                    if email == "1" {
                                         isNext.toggle()
-                                    } else {
-                                        
                                     }
                                 } label: {
                                     Text("Войти с паролем")
@@ -101,7 +109,7 @@ struct MainScreen: View {
                                 }
                             } label: {
                                 Text("Я ищу сотрудников")
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 30)
+                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
                                     .font(.system(size: 16, weight: .bold))
                                     .background(.green)
                                     .cornerRadius(50)
@@ -117,10 +125,17 @@ struct MainScreen: View {
                 }
                 .foregroundStyle(.white)
                 .sheet(isPresented: $isNext) {
-                    Input()
+                    Input(selected: $selected)
                 }
             }
             .background(.color1)
         }
+        
+        
+    }
+    func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Stub: View {
+    @Binding var selected: Int
     var body: some View {
         VStack {
             Text("Заглушка")

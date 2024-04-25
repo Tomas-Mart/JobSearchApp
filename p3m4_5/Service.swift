@@ -9,33 +9,17 @@ import Foundation
 
 class Service {
     
-    // https://run.mocky.io/v3/ed41d10e-0c1f-4439-94fa-9702c9d95c14
-    
-    func getNews(completion: @escaping ([Vacancies]) -> ()) {
-        
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "run.mocky.io"
-        urlComponents.path = "/v3/ed41d10e-0c1f-4439-94fa-9702c9d95c14"
-        
-        guard let url = urlComponents.url else {return}
-        let req = URLRequest(url: url)
-        
-        URLSession.shared.dataTask(with: req) { data, response, error in
-            guard error == nil, let resData = data else {
-                print(error!.localizedDescription)
-                return
-            }
-            
+    func loadJson(filename fileName: String, completion: @escaping ([Vacancies]) -> ()) {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
             do {
-                let result = try JSONDecoder().decode(Offers.self, from: resData)
-                completion(result.vacancies)
-                print(result)
-            } catch let error {
-                print(error.localizedDescription)
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(Offers.self, from: data)
+                completion(jsonData.vacancies)
+            } catch {
+                print("error:\(error.localizedDescription)")
             }
-            
-        }.resume()
+        }
     }
 }
 
@@ -73,5 +57,3 @@ struct Experience: Codable, Hashable {
 struct Salary: Codable, Hashable {
     let full: String?
 }
-
-

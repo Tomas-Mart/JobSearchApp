@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeScreen: View {
     @StateObject var contentViewModel = ContentViewModel()
+    var menu: [Menu] = Menu.getMenu()
     @State var isNext = false
     @Binding var selected: Int
     var body: some View {
@@ -42,76 +43,13 @@ struct HomeScreen: View {
                     .foregroundColor(.gray)
                     .cornerRadius(10)
                     
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 10) {
-                            
-                            VStack(alignment: .leading) {
-                                
-                                Image(.personBlue)
-                                    .padding(.leading, 10)
-                                    .padding(.top, 20)
-                                
-                                Spacer()
-                                
-                                Text("Вакансии рядом с вами")
-                                    .padding(.horizontal)
-                                    .padding(.bottom, 20)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                       HStack {
+                            Spacer()
+                            ForEach(menu, id: \.self) { item in
+                                MyMenu(image: item.image, text: item.text, textTop: item.textTop)
                             }
-                            .frame(maxWidth: 170, minHeight: 150)
-                            .background(.color2)
-                            .cornerRadius(20)
-                            
-                            VStack(alignment: .leading) {
-                                
-                                Image(.star)
-                                    .padding(.leading, 10)
-                                    .padding(.top, 20)
-                                
-                                Spacer()
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Поднять резюме в поиске")
-                                    Text("Поднять")
-                                        .foregroundStyle(.green)
-                                }
-                                .padding(.horizontal)
-                                .padding(.bottom, 20)
-                            }
-                            .frame(maxWidth: 170, minHeight: 150)
-                            .background(.color2)
-                            .cornerRadius(20)
-                            
-                            VStack(alignment: .leading) {
-                                
-                                Image(.blank)
-                                    .padding(.leading, 10)
-                                    .padding(.top, 20)
-                                
-                                Spacer()
-                                
-                                Text("Временная работа и подработка")
-                                    .padding(.horizontal)
-                                    .padding(.bottom, 20)
-                            }
-                            .frame(maxWidth: 170, minHeight: 150)
-                            .background(.color2)
-                            .cornerRadius(20)
-                            
-                            VStack(alignment: .leading) {
-                                
-                                Image(.heartBlue)
-                                    .padding(.leading, 10)
-                                    .padding(.top, 20)
-                                
-                                Spacer()
-                                
-                                Text("Полезные статьи и советы")
-                                    .padding(.horizontal)
-                                    .padding(.bottom, 20)
-                            }
-                            .frame(maxWidth: 170, minHeight: 150)
-                            .background(.color2)
-                            .cornerRadius(20)
+                            Spacer()
                         }
                     }
                     
@@ -120,16 +58,17 @@ struct HomeScreen: View {
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                         .font(.system(size: 25, weight: .bold))
                     
-                    
                     ForEach(contentViewModel.data, id: \.self) { vacancies in
-                        ContentViewVacancies(vacancies: vacancies, selected: $selected)
+                        ContentVacancies(vacancies: vacancies, selected: $selected)
                     }
                 }
             }
             .foregroundStyle(.white)
             .sheet(isPresented: $isNext) {
-                Input()
+                Input(selected: $selected)
             }
+            
+            Spacer(minLength: 90)
         }
         .background(.color1)
     }

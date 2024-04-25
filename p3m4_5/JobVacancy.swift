@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct JobVacancy: View {
+    var vacancies: Vacancies
     @Binding var selected: Int
     var body: some View {
         NavigationView {
@@ -75,13 +76,44 @@ struct JobVacancy: View {
                             
                             Text("-Проектировать пользовательский опыт, проводить UX исследования; -Разрабатывать адаптивный дизайн интерфейса для мобильных приложений; -Разрабатывать быстрые прототипы для тестирования идеи дизайна и их последующая; интеграция на основе обратной связи от команды и пользователей; -Взаимодействовать с командой разработчиков для обеспечения точной реализации ваших дизайнов; -Анализ пользовательского опыта и адаптация под тренды.")
                             
-                            Text("Задайте вопрос работодателю")
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text("Задайте вопрос работодателю")
+                                    .bold()
+                                Text("Он получит его с откликом на вакансию")
+                                    .foregroundColor(.gray)
+                            }
                             
-                            Text("Он получит его с откликом на вакансию")
+                            VStack(alignment: .leading, spacing: 20) {
+                                
+                                Text("UI/UX Designer")
+                                    .padding()
+                                    .background(.color3)
+                                    .clipShape(.capsule)
+                                
+                                Text("Уровень дохода не указан")
+                                    .padding()
+                                    .background(.color3)
+                                    .clipShape(.capsule)
+                                
+                                Text("Требуемый опыт: от 1 года до 3 лет")
+                                    .padding()
+                                    .background(.color3)
+                                    .clipShape(.capsule)
+                                
+                                Text("Полная занятость, полный день")
+                                    .padding()
+                                    .background(.color3)
+                                    .clipShape(.capsule)
+                                
+                                Questions(vacancies: vacancies)
+                            }
                         }
                     }
                 }
                 .foregroundStyle(.white)
+                
+                Spacer(minLength: 90)
+                
             }
             .background(.color1)
         }

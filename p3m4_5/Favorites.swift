@@ -77,7 +77,7 @@ struct Favorites: View {
                             }
                         } label: {
                             Text("Откликнуться")
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 30)
+                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
                                 .font(.system(size: 16, weight: .bold))
                                 .background(.green)
                                 .cornerRadius(50)
@@ -93,7 +93,7 @@ struct Favorites: View {
             }
             .foregroundStyle(.white)
             .sheet(isPresented: $isNext) {
-                Input()
+                Input(selected: $selected)
             }
         }
         .background(.color1)
