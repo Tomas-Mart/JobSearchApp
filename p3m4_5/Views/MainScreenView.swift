@@ -59,8 +59,8 @@ struct MainScreenView: View {
                             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: isEmailValid ? 0 : 2))
                             
                             HStack{
-                                NavigationLink {
-                                    InputView(selected: $selected)
+                                Button {
+                                    isNext = true
                                 } label: {
                                     Text("Продолжить")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
@@ -101,11 +101,7 @@ struct MainScreenView: View {
                                     .font(.system(size: 14, weight: .regular))
                             }
                             Button {
-                                if isNext {
-                                    isNext.toggle()
-                                } else {
                                     
-                                }
                             } label: {
                                 Text("Я ищу сотрудников")
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
@@ -123,7 +119,7 @@ struct MainScreenView: View {
                     }
                 }
                 .foregroundStyle(.white)
-                .sheet(isPresented: $isNext) {
+                .fullScreenCover(isPresented: $isNext) {
                     InputView(selected: $selected)
                 }
             }

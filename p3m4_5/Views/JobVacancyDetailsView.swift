@@ -15,9 +15,9 @@ struct JobVacancyDetailsView: View {
     @Binding var selected: Int
     @FocusState private var amountIsFocused: Bool
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                Color.color1
+                Color.color1.ignoresSafeArea()
                 ScrollView {
                     VStack {
                         VStack(alignment: .leading, spacing: 20) {
@@ -173,7 +173,6 @@ struct JobVacancyDetailsView: View {
                 .foregroundStyle(.white)
                 .padding(.bottom, amountIsFocused ? 320 : 20)
             }
-            .ignoresSafeArea()
         }
     }
 }
