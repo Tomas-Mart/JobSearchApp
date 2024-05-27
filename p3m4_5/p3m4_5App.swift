@@ -12,7 +12,7 @@ struct p3m4_5App: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                MyAuthView()
             }
         }
     }

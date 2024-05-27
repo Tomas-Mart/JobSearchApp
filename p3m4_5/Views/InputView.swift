@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct Input: View {
+struct InputView: View {
     @Binding var selected: Int
     @State var isNext = false
     @State var number = ""
+    @State private var password = ""
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,16 +30,18 @@ struct Input: View {
                     }
                     
                     HStack(alignment: .center) {
-                        
-                        TextFild()
-                        TextFild()
-                        TextFild()
-                        TextFild()
-                        
+                        ForEach(0..<4) { index in
+                            SecureField("*", text: $password, prompt: Text("*").foregroundColor(.gray))
+                                .keyboardType(.numberPad)
+                                .frame(width: 50, height: 50, alignment: .center)
+                                .multilineTextAlignment(.center)
+                                .background(.color3)
+                                .cornerRadius(10)
+                        }
                     }
                     
                     NavigationLink {
-                        HomeScreen(selected: $selected)
+                        ContentView()
                     } label: {
                         Text("Подтвердить")
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 50)
@@ -54,4 +57,7 @@ struct Input: View {
             }
         }
     }
+}
+#Preview {
+    InputView(selected: .constant(3))
 }

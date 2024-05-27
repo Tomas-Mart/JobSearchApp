@@ -46,3 +46,6 @@ struct TabItem: View {
         }
     }
 }
+#Preview {
+        TabItem(item: 1, selected: .constant(1))
+}

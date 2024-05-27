@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Favorites: View {
+struct FavoritesScreenView: View {
     @State var isNext = false
     @Binding var selected: Int
     var body: some View {
@@ -93,9 +93,12 @@ struct Favorites: View {
             }
             .foregroundStyle(.white)
             .sheet(isPresented: $isNext) {
-                Input(selected: $selected)
+                InputView(selected: $selected)
             }
         }
         .background(.color1)
     }
+}
+#Preview {
+    FavoritesScreenView(selected: .constant(3))
 }

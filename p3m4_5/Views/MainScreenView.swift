@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainScreen: View {
+struct MainScreenView: View {
     @State private var email = ""
     @State private var isEmailValid = false
     @State private var isNext = false
@@ -39,20 +39,19 @@ struct MainScreen: View {
                                     .padding(.all, 10)
                                 
                                 TextField("", text: $email, prompt: Text("Электронная почта или телефон").foregroundColor(.gray))
-                                    
-                                                        .autocapitalization(.none)
-//                                                        .onReceive(Just(email)) { text in
-//                                                            self.isEmailValid = self.isValidEmail(email: text)
-//                                                        }
-                                    .overlay(Button(action: {
-                                        self.email = ""
-                                    }) {
-                                        if !self.email.isEmpty {
-                                            Image(systemName: "xmark")
-                                                .foregroundColor(.white)
-                                        }
+                                .onReceive(email.publisher.collect()) { text in
+                                    self.isEmailValid = self.validateEmail(email: "\(text)")
+                                }
+                                .overlay(Button(action: {
+                                    self.email = ""
+                                }) {
+                                    if !self.email.isEmpty {
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(.white)
                                     }
-                                        .padding(.trailing, 15), alignment: .trailing)
+                                }
+                                .padding(.trailing, 15), alignment: .trailing)
+                                .disabled(!isEmailValid)
                             }
                             .background(.color3)
                             .cornerRadius(10)
@@ -61,7 +60,7 @@ struct MainScreen: View {
                             
                             HStack{
                                 NavigationLink {
-                                    Input(selected: $selected)
+                                    InputView(selected: $selected)
                                 } label: {
                                     Text("Продолжить")
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
@@ -125,17 +124,22 @@ struct MainScreen: View {
                 }
                 .foregroundStyle(.white)
                 .sheet(isPresented: $isNext) {
-                    Input(selected: $selected)
+                    InputView(selected: $selected)
                 }
             }
             .background(.color1)
         }
-        
-        
     }
-    func isValidEmail(email: String) -> Bool {
+    
+    func validateEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+}
+
+#Preview {
+    NavigationStack {
+        MainScreenView(selected: .constant(3))
     }
 }

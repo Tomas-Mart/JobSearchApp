@@ -20,35 +20,35 @@ struct ContentView: View {
         ZStack(alignment: .bottom) {
             
             TabView(selection: $selected) {
-                HomeScreen(selected: $selected)
+                HomeScreenView(selected: $selected)
                     .tag(1)
                     .tabItem {
                         Image(.search)
                         Text("Поиск")
                     }
                 
-                Favorites(selected: $selected)
+                FavoritesScreenView(selected: $selected)
                     .tag(2)
                     .tabItem {
                         Image(.heart)
                         Text("Избранное")
                     }
                 
-                Stub(selected: $selected)
+                StubView(selected: $selected)
                     .tag(3)
                     .tabItem {
                         Image(.letter)
                         Text("Отклики")
                     }
                 
-                Stub(selected: $selected)
+                StubView(selected: $selected)
                     .tag(4)
                     .tabItem {
                         Image(.message)
                         Text("Сообщения")
                     }
                 
-                MainScreen(selected: $selected)
+                StubView(selected: $selected)
                     .tag(5)
                     .tabItem {
                         Image(.person)

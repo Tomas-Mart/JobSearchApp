@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct Stub: View {
+struct StubView: View {
     @Binding var selected: Int
     var body: some View {
         VStack {
             Text("Заглушка")
                 .foregroundStyle(.red)
-            
         }
     }
+}
+#Preview {
+    StubView(selected: .constant(3))
 }

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct JobVacancy: View {
-    var vacancies: Vacancies
+struct JobVacancyView: View {
+    var vacancie: Vacancies
     @Binding var selected: Int
     var body: some View {
         NavigationView {
@@ -105,7 +105,7 @@ struct JobVacancy: View {
                                     .background(.color3)
                                     .clipShape(.capsule)
                                 
-                                Questions(vacancies: vacancies)
+                                Questions(vacancie: vacancie)
                             }
                         }
                     }
@@ -118,4 +118,8 @@ struct JobVacancy: View {
             .background(.color1)
         }
     }
+}
+
+#Preview {
+    JobVacancyView(vacancie: ContentViewModel.preview, selected: .constant(3))
 }

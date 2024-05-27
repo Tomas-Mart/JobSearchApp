@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeScreen: View {
+struct HomeScreenView: View {
     @StateObject var contentViewModel = ContentViewModel()
     var menu: [Menu] = Menu.getMenu()
     @State var isNext = false
@@ -58,18 +58,21 @@ struct HomeScreen: View {
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                         .font(.system(size: 25, weight: .bold))
                     
-                    ForEach(contentViewModel.data, id: \.self) { vacancies in
-                        ContentVacancies(vacancies: vacancies, selected: $selected)
+                    ForEach(contentViewModel.data, id: \.self) { vacancie in
+                        ContentVacancies(vacancie: vacancie, selected: $selected)
                     }
                 }
             }
             .foregroundStyle(.white)
             .sheet(isPresented: $isNext) {
-                Input(selected: $selected)
+                InputView(selected: $selected)
             }
             
             Spacer(minLength: 90)
         }
         .background(.color1)
     }
+}
+#Preview {
+    HomeScreenView(selected: .constant(3))
 }

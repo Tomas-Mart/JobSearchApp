@@ -19,3 +19,7 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
         }
     }
 }
+
+#Preview {
+    NavigationConfigurator()
+}

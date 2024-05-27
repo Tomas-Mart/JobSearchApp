@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentVacancies: View {
-    var vacancies: Vacancies
+    var vacancie: Vacancies
     @State var isActive = false
     @State var isNext = false
     @Binding var selected: Int
@@ -17,12 +17,12 @@ struct ContentVacancies: View {
         VStack(alignment: .leading, spacing: 16) {
             
             NavigationLink {
-                JobVacancyDetails(vacancies: vacancies, selected: $selected)
+                JobVacancyDetailsView(vacancie: vacancie, selected: $selected)
             } label: {
                 VStack(alignment: .leading, spacing: 10) {
                     
                     HStack {
-                        Text("Cейчас просматривает \(vacancies.lookingNumber ?? 0) человек")
+                        Text("Cейчас просматривает \(vacancie.lookingNumber ?? 0) человек")
                             .font(.system(size: 16, weight: .regular))
                             .foregroundStyle(.green)
                         
@@ -34,14 +34,14 @@ struct ContentVacancies: View {
                         })
                     }
                     
-                    Text(vacancies.title ?? "")
+                    Text(vacancie.title ?? "")
                         .font(.system(size: 20, weight: .bold))
                     
-                    Text(vacancies.address.town ?? "")
+                    Text(vacancie.address.town ?? "")
                         .font(.system(size: 16, weight: .regular))
                     
                     HStack {
-                        Text(vacancies.company ?? "")
+                        Text(vacancie.company ?? "")
                             .font(.system(size: 16, weight: .regular))
                         
                         Image(.mark)
@@ -50,11 +50,11 @@ struct ContentVacancies: View {
                     HStack {
                         Image(.bag)
                         
-                        Text(vacancies.experience.previewText ?? "")
+                        Text(vacancie.experience.previewText ?? "")
                             .font(.system(size: 16, weight: .regular))
                     }
                     
-                    Text("Опубликовано \(vacancies.publishedDate ?? "")")
+                    Text("Опубликовано \(vacancie.publishedDate ?? "")")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundStyle(.gray)
                 }
@@ -77,4 +77,6 @@ struct ContentVacancies: View {
         .cornerRadius(20)
     }
 }
-
+#Preview {
+    ContentVacancies(vacancie: ContentViewModel.preview, selected: .constant(3))
+}

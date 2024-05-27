@@ -47,3 +47,7 @@ struct MyMenu:  View {
         }
     }
 }
+
+#Preview {
+    MyMenu(image: "heartBlue", text: "Test", textTop: "Test")
+}

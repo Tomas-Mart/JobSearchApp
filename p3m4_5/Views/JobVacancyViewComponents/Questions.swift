@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct Questions: View {
-    var vacancies: Vacancies
+    var vacancie: Vacancies
     var body: some View {
-        ForEach(vacancies.questions ?? [], id: \.self) { questions in
+        ForEach(vacancie.questions ?? [], id: \.self) { questions in
             Text(questions)
                 .padding()
                 .background(.color3)
                 .clipShape(.capsule)
         }
     }
+}
+
+#Preview {
+    Questions(vacancie: ContentViewModel.preview)
 }
