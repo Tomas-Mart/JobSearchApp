@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct p3m4_5App: App {
+    
+    @AppStorage("isAuthorized") var isAuthorized: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                MyAuthView()
+            if isAuthorized {
+                NavigationStack {
+                    ContentView()
+                }
+            } else {
+                AuthScreen()
             }
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-    @StateObject var contentViewModel = ContentViewModel()
+    @StateObject var vm = ContentViewModel()
     var menu: [Menu] = Menu.getMenu()
     @State var isNext = false
     @Binding var selected: Int
@@ -16,9 +16,8 @@ struct HomeScreenView: View {
         NavigationStack {
             ZStack {
                 Color.color1.ignoresSafeArea()
-            ScrollView {
+                ScrollView {                
                     VStack(spacing: 20) {
-                        
                         HStack {
                             HStack {
                                 
@@ -57,19 +56,16 @@ struct HomeScreenView: View {
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                             .font(.system(size: 25, weight: .bold))
                         
-                        ForEach(contentViewModel.data, id: \.self) { vacancie in
-                            ContentVacancies(vacancie: vacancie, selected: $selected)
+                        ForEach(vm.data, id: \.self) { vacancie in
+                            VacanciesCard(vacancie: vacancie, selected: $selected)
                         }
                     }
                 }
                 .foregroundStyle(.white)
-                .sheet(isPresented: $isNext) {
-                    InputView(selected: $selected)
-                }
                 
                 Spacer(minLength: 90)
             }
-            .background(.color1)
+            .toolbarBackground(.color1, for: .navigationBar)
         }
     }
 }

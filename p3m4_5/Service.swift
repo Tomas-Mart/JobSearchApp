@@ -9,7 +9,7 @@ import Foundation
 
 class Service {
     
-    func loadJson(filename fileName: String, completion: @escaping ([Vacancies]) -> ()) {
+    func loadJson(filename fileName: String, completion: @escaping ([Vacancie]) -> ()) {
         if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)

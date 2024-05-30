@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct MainScreenView: View {
+struct AuthScreen: View {
     @State private var email = ""
-    @State private var isEmailValid = false
     @State private var isNext = false
-    @Binding var selected: Int
+    @State private var isEmailValid = false
+    @State private var isRed = false
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -39,35 +39,45 @@ struct MainScreenView: View {
                                     .padding(.all, 10)
                                 
                                 TextField("", text: $email, prompt: Text("Электронная почта или телефон").foregroundColor(.gray))
-                                .onReceive(email.publisher.collect()) { text in
-                                    self.isEmailValid = self.validateEmail(email: "\(text)")
-                                }
-                                .overlay(Button(action: {
-                                    self.email = ""
-                                }) {
-                                    if !self.email.isEmpty {
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.white)
+                                    .onChange(of: email) { newValue in
+                                        self.isEmailValid = self.validateEmail(email: newValue)
                                     }
-                                }
-                                .padding(.trailing, 15), alignment: .trailing)
-                                .disabled(!isEmailValid)
+                                    .overlay(Button(action: {
+                                        email = ""
+                                        isRed = false
+                                    }) {
+                                        if !email.isEmpty {
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.white)
+                                        }
+                                    }
+                                        .padding(.trailing, 15), alignment: .trailing)
                             }
                             .background(.color3)
                             .cornerRadius(10)
                             .shadow(color: .color1, radius: 10)
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: isEmailValid ? 0 : 2))
-                            
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: isRed ? 2 : 0))
+                            if isRed {
+                                Text("Вы ввели неверный е-mail")
+                                    .foregroundStyle(.red)
+                            }
                             HStack{
                                 Button {
-                                    isNext = true
+                                    if isEmailValid {
+                                        isNext.toggle()
+                                    } else {
+                                        isRed.toggle()
+                                    }
                                 } label: {
                                     Text("Продолжить")
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
+                                        .frame(maxWidth: .infinity, minHeight: 40)
                                         .font(.system(size: 16, weight: .bold))
-                                        .background(.blue)
+                                        .background(email.isEmpty ? .blue.opacity(0.3) : .blue)
+                                        .foregroundStyle(email.isEmpty ? .white.opacity(0.3) : .white)
                                         .cornerRadius(10)
                                 }
+                                .disabled(email.isEmpty)
+                                
                                 
                                 Button {
                                     if email == "1" {
@@ -75,7 +85,7 @@ struct MainScreenView: View {
                                     }
                                 } label: {
                                     Text("Войти с паролем")
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
+                                        .frame(maxWidth: .infinity, minHeight: 40)
                                         .font(.system(size: 16, weight: .bold))
                                         .foregroundColor(.blue)
                                         .cornerRadius(10)
@@ -101,7 +111,7 @@ struct MainScreenView: View {
                                     .font(.system(size: 14, weight: .regular))
                             }
                             Button {
-                                    
+                                
                             } label: {
                                 Text("Я ищу сотрудников")
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 40)
@@ -120,7 +130,7 @@ struct MainScreenView: View {
                 }
                 .foregroundStyle(.white)
                 .fullScreenCover(isPresented: $isNext) {
-                    InputView(selected: $selected)
+                    InputView()
                 }
             }
             .background(.color1)
@@ -136,6 +146,6 @@ struct MainScreenView: View {
 
 #Preview {
     NavigationStack {
-        MainScreenView(selected: .constant(3))
+        AuthScreen()
     }
 }

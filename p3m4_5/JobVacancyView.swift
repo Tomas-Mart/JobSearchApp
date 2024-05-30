@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JobVacancyView: View {
-    var vacancie: Vacancies
+    var vacancie: Vacancie
     @Binding var selected: Int
     var body: some View {
         NavigationView {

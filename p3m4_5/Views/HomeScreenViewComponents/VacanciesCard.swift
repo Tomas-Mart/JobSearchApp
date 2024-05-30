@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ContentVacancies: View {
-    var vacancie: Vacancies
+struct VacanciesCard: View {
+    var vacancie: Vacancie
     @State var isActive = false
     @State var isNext = false
     @Binding var selected: Int
@@ -30,7 +30,7 @@ struct ContentVacancies: View {
                         Button(action: {
                             isActive.toggle()
                         }, label: {
-                            Image(isActive ? .heartBlue : .heart)
+                            Image(vacancie.isFavorite! || isActive ? .heartBlue : .heart)
                         })
                     }
                     
@@ -74,9 +74,10 @@ struct ContentVacancies: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 24)
         .background(.color2)
+        .foregroundStyle(.white)
         .cornerRadius(20)
     }
 }
 #Preview {
-    ContentVacancies(vacancie: ContentViewModel.preview, selected: .constant(3))
+    VacanciesCard(vacancie: ContentViewModel.preview, selected: .constant(5))
 }

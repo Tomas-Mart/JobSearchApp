@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Questions: View {
-    var vacancie: Vacancies
+    var vacancie: Vacancie
     var body: some View {
         ForEach(vacancie.questions ?? [], id: \.self) { questions in
             Text(questions)

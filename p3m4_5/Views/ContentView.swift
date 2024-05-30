@@ -27,7 +27,7 @@ struct ContentView: View {
                         Text("Поиск")
                     }
                 
-                FavoritesScreenView(selected: $selected)
+                FavoritesScreenView(vacancie: ContentViewModel.preview, selected: $selected)
                     .tag(2)
                     .tabItem {
                         Image(.heart)

@@ -10,24 +10,24 @@ import Foundation
 class ContentViewModel: ObservableObject {
     let service = Service()
     let maimJson = "main"
-    @Published var data = [Vacancies]()
+    @Published var data = [Vacancie]()
     init(){
         getAllVacancies()
     }
     
-    private func getAllVacancies() {
+    func getAllVacancies() {
         service.loadJson(filename: maimJson) { vacancie in
             self.data = vacancie
         }
     }
     
-    static let preview: Vacancies = .init(
+    static let preview: Vacancie = .init(
         lookingNumber: 145,
         title: "UI/UX Designer",
         address: Address(town: "Минск", street: "Бирюзова", house: "4/5"),
         company: "Мобирикс",
-        experience: Experience(previewText: "Amina", text: "1 года до 3 лет"),
-        publishedDate: "Amina",
+        experience: Experience(previewText: "Опыт от 1 до 3 лет", text: "1–3 года"),
+        publishedDate: "2024-02-20",
         isFavorite: true,
         salary: Salary(full: "Уровень дохода не указан"),
         schedules: ["Полная занятость, полный день"],

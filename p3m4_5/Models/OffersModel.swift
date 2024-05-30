@@ -9,10 +9,10 @@ import Foundation
 
 
 struct Offers: Codable, Hashable {
-    let vacancies: [Vacancies]
+    let vacancies: [Vacancie]
 }
 
-struct Vacancies: Codable, Hashable {
+struct Vacancie: Codable, Hashable {
     let lookingNumber: Int?
     let title: String?
     let address: Address

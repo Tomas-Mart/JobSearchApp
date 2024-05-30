@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JobVacancyDetailsView: View {
-    var vacancie: Vacancies
+    var vacancie: Vacancie
     @State var isNext = false
     @State var isText = false
     @State private var text = ""
@@ -173,6 +173,7 @@ struct JobVacancyDetailsView: View {
                 .foregroundStyle(.white)
                 .padding(.bottom, amountIsFocused ? 320 : 20)
             }
+            .toolbarBackground(.color1, for: .navigationBar)
         }
     }
 }
