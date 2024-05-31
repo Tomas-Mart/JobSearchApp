@@ -27,11 +27,10 @@ struct VacanciesCard: View {
                             .foregroundStyle(.green)
                         
                         Spacer()
-                        Button(action: {
-                            isActive.toggle()
-                        }, label: {
-                            Image(vacancie.isFavorite! || isActive ? .heartBlue : .heart)
-                        })
+                        
+                            Image(vacancie.isFavorite! || isActive ? .heartBlue : .heart).onTapGesture {
+                                isActive.toggle()
+                            }
                     }
                     
                     Text(vacancie.title ?? "")
@@ -79,5 +78,5 @@ struct VacanciesCard: View {
     }
 }
 #Preview {
-    VacanciesCard(vacancie: ContentViewModel.preview, selected: .constant(5))
+    VacanciesCard(vacancie: ContentViewModel.preview, selected: .constant(1))
 }

@@ -62,10 +62,39 @@ struct HomeScreenView: View {
                     }
                 }
                 .foregroundStyle(.white)
-                
+                .padding(.bottom, 50)
                 Spacer(minLength: 90)
             }
             .toolbarBackground(.color1, for: .navigationBar)
+        }
+    }
+}
+
+extension HomeScreenView {
+    final class ViewModel: ObservableObject {
+        @Published var items = [Vacancie]()
+        @Published var showingFavs = false
+        @Published var savedItems: Set<String> = ["", ""]
+        var filteredItems: [Vacancie] {
+            if showingFavs {
+                return items.filter {savedItems.contains($0.id)}
+            } else {
+                return items
+            }
+        }
+
+        func sortFavs() {
+                showingFavs.toggle()
+        }
+        func contains(_ item: Vacancie) -> Bool {
+            savedItems.contains(item.id)
+        }
+        func toggleFav(item: Vacancie) {
+            if contains(item) {
+                savedItems.remove(item.id)
+            } else {
+                savedItems.insert(item.id)
+            }
         }
     }
 }

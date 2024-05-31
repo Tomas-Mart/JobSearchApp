@@ -22,6 +22,7 @@ class ContentViewModel: ObservableObject {
     }
     
     static let preview: Vacancie = .init(
+        id: "cbf0c984-7c6c-4ada-82da-e29dc698bb50",
         lookingNumber: 145,
         title: "UI/UX Designer",
         address: Address(town: "Минск", street: "Бирюзова", house: "4/5"),

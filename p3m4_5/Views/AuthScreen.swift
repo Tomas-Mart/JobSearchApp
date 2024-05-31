@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AuthScreen: View {
-    @State private var email = ""
+    @State var email = ""
     @State private var isNext = false
     @State private var isEmailValid = false
     @State private var isRed = false
@@ -130,7 +130,7 @@ struct AuthScreen: View {
                 }
                 .foregroundStyle(.white)
                 .fullScreenCover(isPresented: $isNext) {
-                    InputView()
+                    InputView(email: $email)
                 }
             }
             .background(.color1)

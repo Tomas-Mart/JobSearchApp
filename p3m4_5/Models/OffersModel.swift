@@ -12,7 +12,8 @@ struct Offers: Codable, Hashable {
     let vacancies: [Vacancie]
 }
 
-struct Vacancie: Codable, Hashable {
+struct Vacancie: Identifiable, Codable, Hashable {
+    var id: String
     let lookingNumber: Int?
     let title: String?
     let address: Address

@@ -23,11 +23,9 @@ struct FavoritesCard: View {
                     
                     Spacer()
                     
-                    Button(action: {
+                    Image(vacancie.isFavorite! && !isActive ? .heartBlue : .heart).onTapGesture {
                         isActive.toggle()
-                    }, label: {
-                        Image(vacancie.isFavorite! && !isActive ? .heartBlue : .heart)
-                    })
+                    }
                 }
                 
                 Text(vacancie.title ?? "")

@@ -171,7 +171,7 @@ struct JobVacancyDetailsView: View {
                     }
                 }
                 .foregroundStyle(.white)
-                .padding(.bottom, amountIsFocused ? 320 : 20)
+                .padding(.bottom, amountIsFocused ? 150 : 20)
             }
             .toolbarBackground(.color1, for: .navigationBar)
         }

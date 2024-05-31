@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct InputView: View {
-    
     @AppStorage("isAuthorized") var isAuthorized: Bool = false
     @State var isNext = false
     @State private var currentIndex = 0
+    @Binding var email: String
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,7 +22,7 @@ struct InputView: View {
                     
                     VStack(alignment: .leading, spacing: 16) {
                         
-                        Text("Отправили код на  example@mail.ru")
+                        Text("Отправили код на  \(email)")
                             .font(.system(size: 16, weight: .bold))
                         
                         Text("Напишите его, чтобы подтвердить, что это вы, а не кто-то другой входит в личный кабинет")
@@ -49,5 +49,5 @@ struct InputView: View {
 }
 
 #Preview {
-    InputView()
+    InputView(email: .constant("example@mail.ru"))
 }
